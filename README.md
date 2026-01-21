@@ -5,8 +5,7 @@ This directory contains the embedded firmware for a headless Battery
 Management System (BMS) prototype built using ESP8266.
 
 The firmware is responsible for sensor acquisition, safety monitoring,
-and publishing battery status over MQTT. The system is intentionally
-designed without any UI or mobile application.
+and publishing battery status over MQTT.
 
 ---
 

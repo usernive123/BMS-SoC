@@ -1,72 +1,83 @@
-# BMS_SoC
-# ESP8266 Firmware – Headless Battery Management System
+# Headless Battery Management System using ESP8266 and MQTT
 
-This directory contains the embedded firmware for a headless Battery
-Management System (BMS) prototype built using ESP8266.
+This repository contains a headless Battery Management System (BMS)
+prototype focused on embedded firmware reliability and Linux-friendly
+data communication.
 
-The firmware is responsible for sensor acquisition, safety monitoring,
-and publishing battery status over MQTT.
-
----
-
-## Responsibilities
-
-- Read battery-related signals
-- Handle interrupt-driven pulse counting
-- Perform periodic tasks using timers
-- Monitor temperature and trigger safety alerts
-- Publish State of Charge (SoC) over MQTT
-- Output structured logs via Serial for debugging
+The project is intentionally designed without a mobile application,
+web UI, or cloud dashboard. The emphasis is on clean embedded design,
+observability, and modular system architecture.
 
 ---
 
-## Hardware Used
+## Architecture
 
-- ESP8266
-- Temperature sensor (OneWire / DallasTemperature)
-- LED and buzzer for alerts
-- External interrupt source (pulse input)
+ESP8266 Firmware → MQTT Broker → Linux-based CLI Subscriber
 
----
-
-## Key Design Choices
-
-- **Headless operation**: No display or mobile application
-- **Interrupt-based logic**: Efficient event counting
-- **Timer-based scheduling**: Periodic SoC evaluation
-- **MQTT messaging**: Decoupled data transport
-- **Serial logging**: Primary debugging and observability mechanism
+- Firmware publishes battery status over MQTT
+- Serial logs are used for local debugging
+- Backend tools consume data via command-line interfaces
 
 ---
 
-## Build & Flash
+## Features
 
-- Arduino IDE
-- ESP8266 board package installed
-- Select correct COM port and board
-
----
-
-## Configuration
-
-Network and MQTT credentials are stored in a local configuration file
-(`config.h`) which is intentionally excluded from version control for
-security reasons.
-
-A sample configuration file (`config.h.example`) is provided.
+- Interrupt-driven event counting
+- Periodic task scheduling using timers
+- Temperature monitoring with safety alerts
+- MQTT-based data publishing
+- Headless operation (no UI dependencies)
+- Secure handling of credentials
 
 ---
 
-## Debugging
-
-- Use Arduino Serial Monitor at **115200 baud**
-- Logs include sensor readings, SoC updates, and alert status
+## Project Structure
 
 ---
 
-## Notes
+## Technology Stack
 
-This firmware focuses on reliability and clarity rather than advanced
-analytics. It is designed to integrate cleanly with Linux-based systems
-via MQTT and can be extended in the future if needed.
+- C / Arduino (ESP8266)
+- MQTT
+- Python (CLI utilities)
+- Linux development environment
+- Git
+
+---
+
+## Why Headless?
+
+The system is designed to operate without a user interface to simplify
+debugging, improve reliability, and align with embedded and Linux-based
+deployment environments.
+
+This approach also enables easier automation and testing.
+
+---
+
+## Security Considerations
+
+Sensitive configuration such as WiFi and MQTT credentials are excluded
+from version control and provided via local configuration files.
+
+---
+
+## Scope and Limitations
+
+This project focuses on embedded firmware behavior and reliable data
+transport. Advanced analytics, visualization, or ML-based estimation
+are intentionally out of scope and can be layered on top if required.
+
+---
+
+## How to Run
+
+Refer to the README files inside each subdirectory for module-specific
+build and execution instructions.
+
+---
+
+## Author
+
+Nivedha
 
